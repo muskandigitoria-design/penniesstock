@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Stock Trading Penny Market | VIP Terminal</title>
+    <title>Stock_Trading_Penny_Market | VIP Access</title>
 
     <script>
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -11,276 +11,275 @@
         fbq('track', 'PageView');
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
     <style>
-        :root { 
-            --accent: #00ff88; 
-            --accent-glow: rgba(0, 255, 136, 0.3);
-            --bg: #030508;
-            --card: rgba(255, 255, 255, 0.03);
+        :root {
+            /* LUXURY COLOR COMBINATION */
+            --primary: #00ffa3; /* Neon Emerald */
+            --primary-glow: rgba(0, 255, 163, 0.25);
+            --bg-dark: #07090d;
+            --surface: #12161f;
             --border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-dim: #94a3b8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
         body {
-            background-color: var(--bg);
-            background-image: 
-                radial-gradient(circle at 0% 0%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(0, 136, 255, 0.05) 0%, transparent 50%);
-            font-family: 'Outfit', sans-serif;
-            color: #ffffff;
-            line-height: 1.4;
-            overflow-x: hidden;
-        }
-
-        /* Top Ticker Bar */
-        .ticker-wrap {
-            width: 100%;
-            background: rgba(0, 136, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 136, 255, 0.2);
-            padding: 8px 0;
-            font-size: 12px;
-            font-family: 'JetBrains Mono', monospace;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .ticker-content {
-            display: inline-block;
-            animation: ticker 30s linear infinite;
-            color: var(--accent);
-        }
-
-        @keyframes ticker {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .main-layout {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
+            background-color: var(--bg-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            align-items: center;
+            overflow-x: hidden;
+            line-height: 1.5;
         }
 
-        /* Hero Section */
-        .hero {
+        /* Animated Abstract Background */
+        .bg-gradient {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% -20%, #1e293b 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Top Info Bar */
+        .top-banner {
+            width: 100%;
+            background: #0088cc;
+            padding: 10px;
             text-align: center;
-            padding: 20px 0;
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+        }
+        .top-banner a { color: #fff; text-decoration: underline; }
+
+        .container {
+            width: 90%;
+            max-width: 480px;
+            padding: 40px 0 120px 0; /* Space for bottom sticky button */
         }
 
-        .logo-wrap {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 15px;
+        /* Brand Logo Section */
+        .brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
         }
 
-        .logo-img {
+        .logo-box {
+            width: 110px;
+            height: 110px;
+            border-radius: 28px;
+            background: linear-gradient(145deg, #1a1f29, #0a0c10);
+            border: 1px solid var(--border);
+            padding: 6px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            margin-bottom: 15px;
+        }
+
+        .logo-box img {
             width: 100%;
             height: 100%;
-            border-radius: 24px;
+            border-radius: 22px;
             object-fit: cover;
-            border: 2px solid var(--border);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .status-dot {
-            position: absolute;
-            bottom: -5px;
-            right: -5px;
-            background: var(--bg);
-            padding: 4px 10px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
+        .live-chip {
+            background: rgba(0, 255, 163, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 100px;
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--accent);
+            gap: 6px;
         }
 
-        .dot { height: 6px; width: 6px; background: var(--accent); border-radius: 50%; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .pulse { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse-anim 1.5s infinite; }
+        @keyframes pulse-anim { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
+        /* Typography */
         h1 {
-            font-size: 36px;
-            font-weight: 900;
+            font-size: 38px;
+            font-weight: 800;
             letter-spacing: -1.5px;
-            line-height: 1;
-            margin-bottom: 10px;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            text-align: center;
         }
 
-        .gradient-text {
-            background: linear-gradient(to right, #ffffff, var(--accent));
+        h1 span {
+            background: linear-gradient(to right, #ffffff, var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Bento Cards */
+        .subtext {
+            color: var(--text-dim);
+            font-size: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* NEW BENTO LAYOUT */
         .bento-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
+            margin-bottom: 25px;
         }
 
-        .card {
-            background: var(--card);
+        .bento-card {
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 20px;
-            backdrop-filter: blur(20px);
-        }
-
-        .card-full { grid-column: span 2; }
-
-        .card-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .card-value {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .description {
-            font-size: 15px;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.6;
-        }
-
-        /* CTA Area */
-        .cta-section {
-            position: sticky;
-            bottom: 20px;
-            margin-top: 10px;
-            z-index: 100;
-        }
-
-        .timer-strip {
-            text-align: center;
-            font-size: 13px;
-            margin-bottom: 10px;
-            color: #ff4d4d;
-            font-weight: 700;
-        }
-
-        .cta-button {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            gap: 12px;
-            background: var(--accent);
-            color: #000;
-            text-decoration: none;
-            padding: 22px;
-            border-radius: 20px;
-            font-size: 18px;
-            font-weight: 900;
-            text-transform: uppercase;
-            box-shadow: 0 15px 30px var(--accent-glow);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .cta-button:active { transform: scale(0.95); }
+        .bento-card.full { grid-column: span 2; background: linear-gradient(to bottom right, #12161f, #0a0c10); }
+
+        .card-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .card-value { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: var(--primary); }
+        .card-desc { font-size: 14px; color: var(--text-dim); }
+
+        /* FLOATING ACTION BAR (Mobile Optimized) */
+        .action-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 440px;
+            background: rgba(18, 22, 31, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 15px;
+            z-index: 1000;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .timer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 0 10px;
+        }
+
+        .timer-label { font-size: 12px; color: #ff4747; font-weight: 700; text-transform: uppercase; }
+        #timer { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 800; color: #ff4747; }
+
+        .cta-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--primary);
+            color: #000 !important;
+            text-decoration: none !important;
+            padding: 18px;
+            border-radius: 16px;
+            font-size: 17px;
+            font-weight: 800;
+            text-transform: uppercase;
+            box-shadow: 0 8px 25px var(--primary-glow);
+            transition: 0.3s;
+        }
+
+        .cta-btn:active { transform: scale(0.96); }
 
         .footer {
             text-align: center;
-            padding: 30px 0;
+            margin-top: 20px;
             font-size: 12px;
-            color: rgba(255,255,255,0.3);
+            color: var(--text-dim);
         }
+        .footer a { color: var(--primary); text-decoration: none; font-weight: 700; }
 
-        .footer a { color: var(--accent); text-decoration: none; font-weight: 700; }
-
-        /* Responsive scaling */
-        @media (max-width: 380px) {
-            h1 { font-size: 30px; }
-            .card-value { font-size: 20px; }
-            .cta-button { padding: 18px; font-size: 16px; }
+        /* Desktop Adjustment */
+        @media (min-width: 600px) {
+            h1 { font-size: 48px; }
+            .container { max-width: 500px; }
         }
     </style>
 </head>
 <body>
 
-<div class="ticker-wrap">
-    <div class="ticker-content">
-        $PENNY: +24.5% • $BREAKOUT: +12.8% • $ALERTS: LIVE • $PROFIT: SCALABLE • $MARKET: VOLATILE • $JOIN: NOW 
+    <div class="bg-gradient"></div>
+    
+    <div class="top-banner">
+        New to Trading? <a href="https://t.me/+LlAdAsPUDlNiNDE9">Download Telegram First</a>
     </div>
-</div>
 
-<div class="main-layout">
-    <section class="hero">
-        <div class="logo-wrap">
-            <img src="http://zentryx.fun/wp-content/uploads/2026/02/778gt.jpg" class="logo-img" alt="Penny Market Logo">
-            <div class="status-dot">
-                <span class="dot"></span> LIVE
+    <div class="container">
+        <header class="brand">
+            <div class="logo-box">
+                <img src="http://zentryx.fun/wp-content/uploads/2026/02/778gt.jpg" alt="Stock Logo">
+            </div>
+            <div class="live-chip">
+                <span class="pulse"></span> TERMINAL LIVE
+            </div>
+        </header>
+
+        <h1>Stock Trading<br><span>Penny Market</span></h1>
+        <p class="subtext">Join 5,000+ elite traders receiving high-probability penny stock alerts and technical breakdowns.</p>
+
+        <div class="bento-grid">
+            <div class="bento-card">
+                <span class="card-label">Avg Accuracy</span>
+                <span class="card-value">92.4%</span>
+            </div>
+            <div class="bento-card">
+                <span class="card-label">Daily Picks</span>
+                <span class="card-value">3-5</span>
+            </div>
+            <div class="bento-card full">
+                <span class="card-label">Member Benefits</span>
+                <p class="card-desc">Instant entry/exit alerts, weekly market outlooks, and private mentorship room access.</p>
             </div>
         </div>
-        <h1>Stock Trading<br><span class="gradient-text">Penny Market</span></h1>
-    </section>
 
-    <div class="bento-grid">
-        <div class="card card-full">
-            <span class="card-title">Trading Intel</span>
-            <p class="description">Master the small-cap market with <b>real-time penny stock alerts</b> and deep technical breakouts. Join 5,000+ traders winning daily.</p>
-        </div>
-
-        <div class="card">
-            <span class="card-title">Success Rate</span>
-            <div class="card-value">92%</div>
-        </div>
-
-        <div class="card">
-            <span class="card-title">Daily ROI</span>
-            <div class="card-value">+18%</div>
+        <div class="footer">
+            <p>SECURE CONNECTION • 128-BIT ENCRYPTION</p>
+            <p style="margin-top: 10px;">Strategic Ads Managed by <br> <a href="https://telegram.me/+TRlJl628l-FkMWE9">@Nexgroww_agency</a></p>
         </div>
     </div>
 
-    <div class="cta-section">
-        <div class="timer-strip">
-            TERMINAL ACCESS EXPIRES IN: <span id="timer">10</span>s
+    <div class="action-bar">
+        <div class="timer-row">
+            <span class="timer-label">VIP Access Closes In:</span>
+            <span id="timer">10s</span>
         </div>
-        <a href="https://t.me/+LlAdAsPUDlNiNDE9" class="cta-button" onclick="fbq('track', 'Lead')">
+        <a href="https://t.me/+LlAdAsPUDlNiNDE9" class="cta-btn" onclick="fbq('track', 'Lead')">
             Enter VIP Terminal 📈
         </a>
     </div>
 
-    <footer class="footer">
-        <p>SECURE ENCRYPTED CONNECTION • TELEGRAM V5.0</p>
-        <p style="margin-top: 10px;">Managed by <a href="https://telegram.me/+TRlJl628l-FkMWE9">@Nexgroww_agency</a></p>
-    </footer>
-</div>
-
-<script>
-    (function() {
-        let count = 10;
-        const timerSpan = document.getElementById("timer");
-        const x = setInterval(function() {
-            if (count > 0) {
-                count--;
-                if (timerSpan) timerSpan.innerHTML = count;
-            } else {
-                clearInterval(x);
-                timerSpan.innerHTML = "0";
-            }
-        }, 1000);
-    })();
-</script>
-
+    <script>
+        (function() {
+            let count = 10;
+            const timerSpan = document.getElementById("timer");
+            const countdown = setInterval(() => {
+                if (count > 0) {
+                    count--;
+                    if (timerSpan) timerSpan.innerHTML = count + "s";
+                } else {
+                    clearInterval(countdown);
+                }
+            }, 1000);
+        })();
+    </script>
 </body>
 </html>
