@@ -3,177 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Stock_Trading_Penny_Market | VIP Access</title>
+    <title>Stock Trading Penny Market | VIP Terminal</title>
 
-    
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1821302385199793');
+        fbq('track', 'PageView');
+    </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --accent: #00ff88; 
+            --accent-glow: rgba(0, 255, 136, 0.3);
+            --bg: #030508;
+            --card: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+        }
 
-<style>
-    :root { 
-        --neon-green: #00ff88; 
-        --gold: #ffcc00;
-        --bg-dark: #05070a;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(0, 136, 255, 0.05) 0%, transparent 50%);
+            font-family: 'Outfit', sans-serif;
+            color: #ffffff;
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
 
-    .lp-body {
-        background-color: var(--bg-dark);
-        font-family: 'Poppins', sans-serif;
-        color: #ffffff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        min-height: 100vh;
-        padding-bottom: 50px;
-    }
+        /* Top Ticker Bar */
+        .ticker-wrap {
+            width: 100%;
+            background: rgba(0, 136, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 136, 255, 0.2);
+            padding: 8px 0;
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            overflow: hidden;
+            white-space: nowrap;
+        }
 
-    /* Top Blue Banner */
-    .promo-header {
-        width: 100%;
-        background: #0088cc;
-        padding: 12px;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-    }
-    .promo-header a { color: #fff; text-decoration: underline; }
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+            color: var(--accent);
+        }
 
-    /* Logo Styling */
-    .logo-container {
-        margin-top: 40px;
-        position: relative;
-        display: inline-block;
-    }
-    .logo-img {
-        width: 130px;
-        height: 130px;
-        border-radius: 50%;
-        border: 3px solid var(--gold);
-        padding: 5px;
-        background: #000;
-        box-shadow: 0 0 30px rgba(255, 204, 0, 0.3);
-        animation: float 4s infinite ease-in-out;
-    }
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
 
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .main-layout {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-    /* Heading */
-    h1 {
-        font-family: 'Montserrat', sans-serif;
-        font-size: clamp(26px, 8vw, 38px);
-        font-weight: 900;
-        margin-top: 20px;
-        line-height: 1.1;
-        letter-spacing: -1px;
-    }
-    .highlight-green { color: var(--neon-green); text-shadow: 0 0 15px rgba(0, 255, 136, 0.4); }
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 20px 0;
+        }
 
-    /* Glass Card */
-    .glass-card {
-        width: 90%;
-        max-width: 480px;
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 24px;
-        padding: 30px;
-        margin: 30px 0;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    }
-    .glass-card p { font-size: 16px; opacity: 0.8; line-height: 1.6; }
+        .logo-wrap {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+        }
 
-    /* Performance Stats */
-    .stats-row {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 25px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .stat-box span { display: block; font-size: 10px; text-transform: uppercase; opacity: 0.5; margin-bottom: 5px; }
-    .stat-box b { font-size: 20px; color: var(--neon-green); font-family: 'Montserrat', sans-serif; }
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            object-fit: cover;
+            border: 2px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-    /* Countdown */
-    .countdown-text { font-size: 18px; margin-bottom: 20px; font-weight: 400; }
-    #timer { color: #ff4d4d; font-weight: 900; font-size: 24px; }
+        .status-dot {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            background: var(--bg);
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent);
+        }
 
-    /* The Button */
-    .cta-button {
-        display: block;
-        width: 100%;
-        background: linear-gradient(135deg, #00ff88, #00cc6a);
-        color: #000 !important;
-        text-decoration: none !important;
-        padding: 22px;
-        border-radius: 50px;
-        font-size: 20px;
-        font-weight: 800;
-        text-transform: uppercase;
-        box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
-        transition: 0.3s ease;
-        animation: pulseBtn 2s infinite;
-    }
-    @keyframes pulseBtn { 0% { transform: scale(1); } 50% { transform: scale(1.04); } 100% { transform: scale(1); } }
+        .dot { height: 6px; width: 6px; background: var(--accent); border-radius: 50%; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-    /* Agency Footer */
-    .agency-footer {
-        margin-top: 50px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 14px;
-        opacity: 0.7;
-    }
-    .agency-footer a { color: var(--gold); text-decoration: none; font-weight: 700; }
+        h1 {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
 
-    @media (max-width: 480px) {
-        .glass-card { padding: 20px; }
-        h1 { font-size: 28px; }
-    }
-</style>
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-<div class="lp-body">
-    <div class="promo-header">
-        New to Stocks? <a href="https://t.me/+LlAdAsPUDlNiNDE9" target="_blank">Download Telegram First</a>
+        /* Bento Cards */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(20px);
+        }
+
+        .card-full { grid-column: span 2; }
+
+        .card-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .card-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .description {
+            font-size: 15px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+
+        /* CTA Area */
+        .cta-section {
+            position: sticky;
+            bottom: 20px;
+            margin-top: 10px;
+            z-index: 100;
+        }
+
+        .timer-strip {
+            text-align: center;
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: #ff4d4d;
+            font-weight: 700;
+        }
+
+        .cta-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            padding: 22px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            box-shadow: 0 15px 30px var(--accent-glow);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .cta-button:active { transform: scale(0.95); }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .footer a { color: var(--accent); text-decoration: none; font-weight: 700; }
+
+        /* Responsive scaling */
+        @media (max-width: 380px) {
+            h1 { font-size: 30px; }
+            .card-value { font-size: 20px; }
+            .cta-button { padding: 18px; font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+    <div class="ticker-content">
+        $PENNY: +24.5% • $BREAKOUT: +12.8% • $ALERTS: LIVE • $PROFIT: SCALABLE • $MARKET: VOLATILE • $JOIN: NOW 
     </div>
+</div>
 
-    <div class="logo-container">
-        <img src="http://zentryx.fun/wp-content/uploads/2026/02/778gt.jpg" class="logo-img" alt="Logo">
-    </div>
+<div class="main-layout">
+    <section class="hero">
+        <div class="logo-wrap">
+            <img src="http://zentryx.fun/wp-content/uploads/2026/02/778gt.jpg" class="logo-img" alt="Penny Market Logo">
+            <div class="status-dot">
+                <span class="dot"></span> LIVE
+            </div>
+        </div>
+        <h1>Stock Trading<br><span class="gradient-text">Penny Market</span></h1>
+    </section>
 
-    <h1>Stock_Trading_<br><span class="highlight-green">Penny_Market</span></h1>
+    <div class="bento-grid">
+        <div class="card card-full">
+            <span class="card-title">Trading Intel</span>
+            <p class="description">Master the small-cap market with <b>real-time penny stock alerts</b> and deep technical breakouts. Join 5,000+ traders winning daily.</p>
+        </div>
 
-    <div class="glass-card">
-        <p>Master the small-cap market with <b>real-time penny stock alerts</b> and deep technical breakouts. Join 5,000+ traders winning daily.</p>
-        
-        <div class="stats-row">
-            <div class="stat-box"><span>Accuracy</span><b>92%</b></div>
-            <div class="stat-box"><span>ROI</span><b>+18%</b></div>
-            <div class="stat-box"><span>Signals</span><b>Live</b></div>
+        <div class="card">
+            <span class="card-title">Success Rate</span>
+            <div class="card-value">92%</div>
+        </div>
+
+        <div class="card">
+            <span class="card-title">Daily ROI</span>
+            <div class="card-value">+18%</div>
         </div>
     </div>
 
-    <div class="countdown-text">
-        VIP Invite expires in: <span id="timer">10</span>s ⏳
-    </div>
-
-    <div style="width: 90%; max-width: 400px;">
+    <div class="cta-section">
+        <div class="timer-strip">
+            TERMINAL ACCESS EXPIRES IN: <span id="timer">10</span>s
+        </div>
         <a href="https://t.me/+LlAdAsPUDlNiNDE9" class="cta-button" onclick="fbq('track', 'Lead')">
-            JOIN CHANNEL NOW 📈
+            Enter VIP Terminal 📈
         </a>
     </div>
 
-    <p style="font-size: 12px; opacity: 0.4; margin-top: 15px;">Secure connection via Telegram Messenger</p>
-
-    <div class="agency-footer">
-        Ads Strategically Managed by <br>
-        <a href="https://telegram.me/+TRlJl628l-FkMWE9" target="_blank">@Nexgroww_agency</a>
-    </div>
+    <footer class="footer">
+        <p>SECURE ENCRYPTED CONNECTION • TELEGRAM V5.0</p>
+        <p style="margin-top: 10px;">Managed by <a href="https://telegram.me/+TRlJl628l-FkMWE9">@Nexgroww_agency</a></p>
+    </footer>
 </div>
 
 <script>
@@ -186,7 +276,11 @@
                 if (timerSpan) timerSpan.innerHTML = count;
             } else {
                 clearInterval(x);
+                timerSpan.innerHTML = "0";
             }
         }, 1000);
     })();
 </script>
+
+</body>
+</html>
