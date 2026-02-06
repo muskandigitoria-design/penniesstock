@@ -3,189 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VIP Terminal | Stock Trading Penny Market</title>
+    <title>Stock Trading Penny Market | VIP Terminal</title>
 
-  
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1821302385199793');
+        fbq('track', 'PageView');
+    </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --cyan: #00f2ff;
             --purple: #7000ff;
             --dark: #050505;
+            --glass: rgba(255, 255, 255, 0.04);
+            --border: rgba(255, 255, 255, 0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
         body {
             background-color: var(--dark);
-            font-family: 'Rajdhani', sans-serif;
+            font-family: 'Poppins', sans-serif;
             color: white;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
+            padding: 20px 0;
         }
 
-        /* LIVE BACKGROUND ANIMATION */
+        /* BACKGROUND PARTICLES */
         #bg-canvas {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at center, #110022 0%, #050505 100%);
+            background: radial-gradient(circle at top right, #1a0033 0%, #050505 100%);
         }
 
-        .main-glass {
-            width: 90%;
-            max-width: 400px;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 40px 25px;
-            text-align: center;
-            box-shadow: 0 0 50px rgba(0,0,0,1);
-            position: relative;
+        .container {
+            width: 92%;
+            max-width: 450px;
             z-index: 10;
         }
 
-        .logo-wrap {
-            width: 100px; height: 100px;
-            margin: 0 auto 20px;
-            padding: 3px;
-            background: linear-gradient(45deg, var(--cyan), var(--purple));
-            border-radius: 50%;
-            box-shadow: 0 0 20px var(--cyan);
+        /* LOGO BOX */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 25px;
         }
 
-        .logo-wrap img {
+        .logo-outer {
+            width: 95px; height: 95px;
+            margin: 0 auto 15px;
+            padding: 3px;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2);
+        }
+
+        .logo-outer img {
             width: 100%; height: 100%;
-            border-radius: 50%;
+            border-radius: 21px;
             object-fit: cover;
-            border: 3px solid var(--dark);
+            border: 2px solid var(--dark);
         }
 
         h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
             line-height: 1.2;
-            margin-bottom: 10px;
-            background: linear-gradient(to bottom, #fff 50%, var(--cyan));
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #fff, var(--cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .badge {
-            display: inline-block;
-            font-size: 12px;
-            background: rgba(0, 242, 255, 0.1);
-            color: var(--cyan);
-            border: 1px solid var(--cyan);
-            padding: 4px 15px;
-            border-radius: 50px;
-            font-weight: 700;
-            margin-bottom: 25px;
-        }
-
-        .stats-container {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-        }
-
-        .stat-item { flex: 1; }
-        .stat-item span { display: block; font-size: 12px; color: #888; text-transform: uppercase; }
-        .stat-item b { font-size: 22px; color: #fff; font-family: 'Orbitron', sans-serif; }
-
-        .timer-row {
-            color: #ff3e3e;
-            font-weight: 700;
-            font-size: 14px;
+        /* CONTENT BENTO GRID */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
             margin-bottom: 20px;
-            font-family: 'Orbitron', sans-serif;
         }
 
-        /* ANIMATED GLOW BUTTON */
-        .cyber-btn {
-            display: block;
-            background: white;
-            color: black !important;
-            text-decoration: none !important;
-            padding: 20px;
-            border-radius: 15px;
-            font-weight: 900;
-            font-size: 18px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 25px var(--cyan);
+        .bento-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 18px;
             transition: 0.3s;
         }
 
-        .cyber-btn:hover {
-            transform: scale(1.05);
-            background: var(--cyan);
-            box-shadow: 0 0 40px var(--purple);
+        .full-width { grid-column: span 2; }
+
+        .card-label { font-size: 11px; color: var(--cyan); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 5px; }
+        .card-val { font-size: 20px; font-weight: 800; color: #fff; }
+        .card-text { font-size: 13px; color: #ccc; line-height: 1.5; margin-top: 5px; }
+
+        /* LIST CONTENT */
+        .perks-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+        .perks-list li {
+            font-size: 13px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            color: #eee;
+        }
+        .perks-list li:before {
+            content: "✓";
+            color: var(--cyan);
+            font-weight: 900;
+            margin-right: 10px;
         }
 
+        /* ACTION SECTION */
+        .cta-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px dashed var(--cyan);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .timer-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: #ff3e3e;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .main-btn {
+            display: block;
+            background: #fff;
+            color: #000 !important;
+            text-decoration: none !important;
+            padding: 18px;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 17px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 40px rgba(0, 242, 255, 0.3);
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .main-btn:active { transform: scale(0.95); }
+
         .footer {
-            margin-top: 30px;
-            font-size: 11px;
-            opacity: 0.5;
-            letter-spacing: 1px;
+            text-align: center;
+            margin-top: 25px;
+            font-size: 12px;
+            color: #666;
         }
         .footer a { color: var(--cyan); text-decoration: none; font-weight: 700; }
+
+        @media (max-width: 400px) {
+            h1 { font-size: 24px; }
+            .card-val { font-size: 18px; }
+        }
     </style>
 </head>
 <body>
 
     <canvas id="bg-canvas"></canvas>
 
-    <div class="main-glass">
-        <div class="logo-wrap">
-            <img src="http://zentryx.fun/wp-content/uploads/2026/02/778gt.jpg" alt="Logo">
-        </div>
-
-        <h1>STOCK TRADING<br>PENNY MARKET</h1>
-        <div class="badge">● TERMINAL ENCRYPTED</div>
-
-        <div class="stats-container">
-            <div class="stat-item">
-                <span>ACCURACY</span>
-                <b>92.4%</b>
+    <div class="container">
+        <div class="brand-header">
+            <div class="logo-outer">
+                <img src="http://zentryx.fun/wp-content/uploads/2026/02/778gt.jpg" alt="Stock Market Logo">
             </div>
-            <div class="stat-item">
-                <span>WIN RATE</span>
-                <b>HIGH</b>
+            <h1>Stock Trading<br>Penny Market</h1>
+        </div>
+
+        <div class="info-grid">
+            <div class="bento-card full-width">
+                <span class="card-label">Strategic Intelligence</span>
+                <p class="card-text">Access institutional-grade analysis for the small-cap market. We identify breakouts before they hit the mainstream news.</p>
+                <ul class="perks-list">
+                    <li>Daily Penny Stock Pickups</li>
+                    <li>Technical Chart Breakdowns</li>
+                    <li>Live Entry/Exit Alerts</li>
+                </ul>
+            </div>
+
+            <div class="bento-card">
+                <span class="card-label">Accuracy</span>
+                <span class="card-val">92.4%</span>
+            </div>
+
+            <div class="bento-card">
+                <span class="card-label">Members</span>
+                <span class="card-val">5,000+</span>
             </div>
         </div>
 
-        <div class="timer-row">
-            LINK EXPIRES: <span id="timer">10</span>S
+        <div class="cta-box">
+            <div class="timer-text">
+                Private Invite Access Expires: <span id="timer">10</span>s
+            </div>
+            <a href="https://t.me/+LlAdAsPUDlNiNDE9" class="main-btn" onclick="fbq('track', 'Lead')">
+                Join Free Channel 📈
+            </a>
+            <p style="font-size: 10px; margin-top: 12px; color: #888;">Secure 256-bit Encrypted Connection</p>
         </div>
-
-        <a href="https://t.me/+LlAdAsPUDlNiNDE9" class="cyber-btn" onclick="fbq('track', 'Lead')">
-            ENTER CHANNEL 📈
-        </a>
 
         <div class="footer">
-            MANAGED BY <br>
-            <a href="https://telegram.me/+TRlJl628l-FkMWE9">@NEXGROWW_AGENCY</a>
+            <p>EST. 2024 • GLOBAL TRADING TERMINAL</p>
+            <p style="margin-top: 8px;">Ads Managed by <a href="https://telegram.me/+TRlJl628l-FkMWE9">@Nexgroww_agency</a></p>
         </div>
     </div>
 
     <script>
-        // BACKGROUND PARTICLES ANIMATION
+        // PARTICLE BACKGROUND ENGINE
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
 
-        function initCanvas() {
+        function init() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
@@ -194,9 +237,10 @@
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.speedY = Math.random() * 1 - 0.5;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = Math.random() * 0.8 - 0.4;
+                this.speedY = Math.random() * 0.8 - 0.4;
+                this.opacity = Math.random() * 0.5 + 0.2;
             }
             update() {
                 this.x += this.speedX;
@@ -207,46 +251,37 @@
                 if (this.y < 0) this.y = canvas.height;
             }
             draw() {
-                ctx.fillStyle = 'rgba(0, 242, 255, 0.5)';
+                ctx.fillStyle = `rgba(0, 242, 255, ${this.opacity})`;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
 
-        function createParticles() {
-            for (let i = 0; i < 80; i++) {
-                particles.push(new Particle());
-            }
+        function create() {
+            for (let i = 0; i < 60; i++) particles.push(new Particle());
         }
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animate);
         }
 
-        window.addEventListener('resize', initCanvas);
-        initCanvas();
-        createParticles();
-        animate();
+        window.addEventListener('resize', init);
+        init(); create(); animate();
 
-        // TIMER SCRIPT
-        (function() {
-            let timeLeft = 10;
-            const timerEl = document.getElementById("timer");
-            const countdown = setInterval(() => {
-                if (timeLeft > 0) {
-                    timeLeft--;
-                    if (timerEl) timerEl.textContent = timeLeft;
-                } else {
-                    clearInterval(countdown);
-                }
-            }, 1000);
-        })();
+        // COUNTDOWN TIMER
+        let count = 10;
+        const timerObj = document.getElementById("timer");
+        const x = setInterval(() => {
+            if (count > 0) {
+                count--;
+                if (timerObj) timerObj.innerText = count;
+            } else {
+                clearInterval(x);
+            }
+        }, 1000);
     </script>
 </body>
 </html>
