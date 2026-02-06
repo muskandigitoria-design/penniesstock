@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VIP Access | Stock Trading Penny Market</title>
+    <title>VIP Access | Penny Market</title>
 
     <script>
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -11,184 +11,194 @@
         fbq('track', 'PageView');
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --navy: #0A0F1C;
-            --accent-blue: #2563EB;
-            --text-main: #111827;
-            --text-muted: #4B5563;
-            --bg-gray: #F9FAFB;
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --bg: #030008;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--navy);
-            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            font-family: 'Outfit', sans-serif;
+            color: white;
+            overflow: hidden; /* Keeps the animation contained */
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            color: white;
         }
 
-        .main-card {
-            background-color: white;
+        /* Animated Gradient Background */
+        .bg-animate {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, #030008, #0d001a, #030008);
+            z-index: -2;
+        }
+
+        .orb {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--secondary), transparent 70%);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: move 15s infinite alternate ease-in-out;
+            opacity: 0.5;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(110%, 110%); }
+        }
+
+        /* Glass Container */
+        .main-container {
             width: 90%;
-            max-width: 440px;
-            border-radius: 2px; /* Sharp, professional edges */
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
             padding: 40px 30px;
-            color: var(--text-main);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
         }
 
-        .header-logo {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 25px;
-            display: block;
-            border: 1px solid #E5E7EB;
-            padding: 5px;
+        .logo-ring {
+            width: 90px; height: 90px;
+            margin: 0 auto 20px;
+            border-radius: 30px;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .logo-ring img {
+            width: 100%; height: 100%;
+            border-radius: 26px;
+            object-fit: cover;
+            border: 2px solid var(--bg);
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            text-align: center;
-            color: var(--navy);
-            margin-bottom: 12px;
-            line-height: 1.2;
-        }
-
-        .divider {
-            width: 40px;
-            height: 3px;
-            background-color: var(--accent-blue);
-            margin: 0 auto 25px;
-        }
-
-        .intro-text {
-            text-align: center;
-            font-size: 15px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .data-grid {
-            border-top: 1px solid #F3F4F6;
-            border-bottom: 1px solid #F3F4F6;
-            padding: 20px 0;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .data-point { text-align: center; }
-        .data-label {
-            display: block;
-            font-size: 10px;
+            font-family: 'Syncopate', sans-serif;
+            font-size: 22px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-        .data-value {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--navy);
-        }
-
-        .status-bar {
-            text-align: center;
-            font-size: 12px;
-            font-weight: 600;
-            color: #DC2626; /* Serious Red */
+            letter-spacing: 2px;
             margin-bottom: 15px;
-            letter-spacing: 0.5px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .btn-prime {
-            display: block;
-            background-color: var(--navy);
-            color: white !important;
-            text-decoration: none !important;
-            text-align: center;
-            padding: 18px;
-            font-weight: 700;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .stat-card span { display: block; font-size: 10px; color: var(--primary); letter-spacing: 1px; margin-bottom: 5px; }
+        .stat-card b { font-size: 20px; font-weight: 800; }
+
+        .timer-text {
+            color: #ff3e3e;
+            font-weight: 800;
             font-size: 14px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255,62,62,0.3);
         }
 
-        .btn-prime:hover { background-color: var(--accent-blue); }
-
-        .footer-credits {
-            margin-top: 30px;
-            text-align: center;
-            font-size: 11px;
-            color: #9CA3AF;
+        /* The Animated Button */
+        .glow-btn {
+            display: block;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: #000 !important;
+            text-decoration: none !important;
+            padding: 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 800;
             text-transform: uppercase;
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
+            transition: 0.3s;
+        }
+
+        .glow-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(112, 0, 255, 0.6);
+        }
+
+        .agency {
+            margin-top: 30px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
             letter-spacing: 1px;
         }
-        .footer-credits a { color: var(--accent-blue); text-decoration: none; }
-
-        @media (max-width: 480px) {
-            .main-card { padding: 40px 20px; }
-            h1 { font-size: 24px; }
-        }
+        .agency a { color: var(--primary); text-decoration: none; }
     </style>
 </head>
 <body>
 
-    <div class="main-card">
-        <img src="http://zentryx.fun/wp-content/uploads/2026/02/778gt.jpg" alt="Logo" class="header-logo">
-        
-        <h1>Stock Trading <br> Penny Market</h1>
-        
-        <div class="divider"></div>
-        
-        <p class="intro-text">
-            Institutional-grade analysis and real-time alerts for the small-cap market. Join our private network of professional retail traders.
-        </p>
+    <div class="bg-animate"></div>
+    <div class="orb"></div>
 
-        <div class="data-grid">
-            <div class="data-point">
-                <span class="data-label">Accuracy</span>
-                <span class="data-value">92.4%</span>
+    <div class="main-container">
+        <div class="logo-ring">
+            <img src="http://zentryx.fun/wp-content/uploads/2026/02/778gt.jpg" alt="Logo">
+        </div>
+
+        <h1>Penny Market<br>VIP Access</h1>
+
+        <p style="font-size: 14px; opacity: 0.7; line-height: 1.6;">Real-time breakout alerts and institutional grade penny stock signals.</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span>ACCURACY</span>
+                <b>92.4%</b>
             </div>
-            <div class="data-point" style="border-left: 1px solid #F3F4F6; padding-left: 20px;">
-                <span class="data-label">Daily ROI</span>
-                <span class="data-value">+18%</span>
+            <div class="stat-card">
+                <span>DAILY ROI</span>
+                <b>+18%</b>
             </div>
         </div>
 
-        <div class="status-bar">
-            ACCESS EXPIRES IN: <span id="timer">10</span> SECONDS
+        <div class="timer-text">
+            INVITE EXPIRES IN: <span id="timer">10</span>S
         </div>
 
-        <a href="https://t.me/+LlAdAsPUDlNiNDE9" class="btn-prime" onclick="fbq('track', 'Lead')">
-            Enter Telegram Terminal
+        <a href="https://t.me/+LlAdAsPUDlNiNDE9" class="glow-btn" onclick="fbq('track', 'Lead')">
+            Enter Telegram 📈
         </a>
 
-        <div class="footer-credits">
-            Secure Terminal Connection <br>
-            Managed by <a href="https://telegram.me/+TRlJl628l-FkMWE9">@Nexgroww_agency</a>
+        <div class="agency">
+            MANAGED BY <br>
+            <a href="https://telegram.me/+TRlJl628l-FkMWE9">@NEXGROWW_AGENCY</a>
         </div>
     </div>
 
     <script>
         (function() {
             let timeLeft = 10;
-            const timerObj = document.getElementById("timer");
+            const timerEl = document.getElementById("timer");
             const countdown = setInterval(() => {
                 if (timeLeft > 0) {
                     timeLeft--;
-                    if (timerObj) timerObj.textContent = timeLeft;
+                    if (timerEl) timerEl.textContent = timeLeft;
                 } else {
                     clearInterval(countdown);
                 }
