@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VIP Access | Penny Market</title>
+    <title>VIP Access | Stock Trading Penny Market</title>
 
     <script>
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -11,169 +11,189 @@
         fbq('track', 'PageView');
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --gold: #D4AF37;
-            --bg: #0A0A0A;
-            --card: #141414;
-            --border: #262626;
-            --text: #FFFFFF;
-            --dim: #A1A1AA;
+            --navy: #0A0F1C;
+            --accent-blue: #2563EB;
+            --text-main: #111827;
+            --text-muted: #4B5563;
+            --bg-gray: #F9FAFB;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--bg);
+            background-color: var(--navy);
             font-family: 'Inter', sans-serif;
-            color: var(--text);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            color: white;
         }
 
-        .wrapper {
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
+        .main-card {
+            background-color: white;
+            width: 90%;
+            max-width: 440px;
+            border-radius: 2px; /* Sharp, professional edges */
+            padding: 40px 30px;
+            color: var(--text-main);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        /* Clean Logo */
-        .logo-box {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 24px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-        }
-        .logo-box img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* Typography */
-        h1 {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-        }
-        .tagline {
-            font-size: 15px;
-            color: var(--dim);
-            margin-bottom: 32px;
-        }
-
-        /* Minimal Card */
-        .stats-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 24px;
-            margin-bottom: 32px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-        .stat-item { text-align: left; }
-        .stat-label { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; display: block; }
-        .stat-value { font-size: 18px; font-weight: 700; color: var(--gold); }
-
-        /* Action Section */
-        .timer-box {
-            font-size: 13px;
-            color: #EF4444;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .cta-button {
+        .header-logo {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 25px;
             display: block;
-            background: #FFFFFF;
-            color: #000000 !important;
-            text-decoration: none !important;
-            padding: 18px;
-            border-radius: 16px;
-            font-size: 16px;
-            font-weight: 700;
-            transition: transform 0.2s ease;
+            border: 1px solid #E5E7EB;
+            padding: 5px;
         }
-        .cta-button:active { transform: scale(0.96); }
 
-        /* Clean Footer */
-        .footer {
-            margin-top: 40px;
-            font-size: 12px;
-            color: var(--dim);
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            text-align: center;
+            color: var(--navy);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .divider {
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-blue);
+            margin: 0 auto 25px;
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 15px;
+            color: var(--text-muted);
             line-height: 1.6;
+            margin-bottom: 30px;
         }
-        .footer a { color: var(--text); text-decoration: none; font-weight: 600; }
 
-        /* Mobile Adjustment */
+        .data-grid {
+            border-top: 1px solid #F3F4F6;
+            border-bottom: 1px solid #F3F4F6;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .data-point { text-align: center; }
+        .data-label {
+            display: block;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        .data-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .status-bar {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #DC2626; /* Serious Red */
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-prime {
+            display: block;
+            background-color: var(--navy);
+            color: white !important;
+            text-decoration: none !important;
+            text-align: center;
+            padding: 18px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+
+        .btn-prime:hover { background-color: var(--accent-blue); }
+
+        .footer-credits {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 11px;
+            color: #9CA3AF;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer-credits a { color: var(--accent-blue); text-decoration: none; }
+
         @media (max-width: 480px) {
+            .main-card { padding: 40px 20px; }
             h1 { font-size: 24px; }
-            .stats-card { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <header>
-            <div class="logo-box">
-                <img src="http://zentryx.fun/wp-content/uploads/2026/02/778gt.jpg" alt="Logo">
+    <div class="main-card">
+        <img src="http://zentryx.fun/wp-content/uploads/2026/02/778gt.jpg" alt="Logo" class="header-logo">
+        
+        <h1>Stock Trading <br> Penny Market</h1>
+        
+        <div class="divider"></div>
+        
+        <p class="intro-text">
+            Institutional-grade analysis and real-time alerts for the small-cap market. Join our private network of professional retail traders.
+        </p>
+
+        <div class="data-grid">
+            <div class="data-point">
+                <span class="data-label">Accuracy</span>
+                <span class="data-value">92.4%</span>
             </div>
-            <h1>Stock_Trading_Market</h1>
-            <p class="tagline">Exclusive Penny Stock Intel & Alerts</p>
-        </header>
-
-        <main>
-            <div class="stats-card">
-                <div class="stat-item">
-                    <span class="stat-label">Accuracy</span>
-                    <span class="stat-value">92.4%</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">ROI</span>
-                    <span class="stat-value">+18%</span>
-                </div>
-                <div class="stat-item" style="grid-column: span 2; border-top: 1px solid var(--border); pt-16; margin-top: 8px; padding-top: 16px;">
-                    <span class="stat-label">Live Status</span>
-                    <span class="stat-value" style="color: #10B981;">● Active Signals</span>
-                </div>
+            <div class="data-point" style="border-left: 1px solid #F3F4F6; padding-left: 20px;">
+                <span class="data-label">Daily ROI</span>
+                <span class="data-value">+18%</span>
             </div>
+        </div>
 
-            <div class="timer-box">
-                INVITE EXPIRES IN: <span id="timer">10</span>S
-            </div>
+        <div class="status-bar">
+            ACCESS EXPIRES IN: <span id="timer">10</span> SECONDS
+        </div>
 
-            <a href="https://t.me/+LlAdAsPUDlNiNDE9" class="cta-button" onclick="fbq('track', 'Lead')">
-                Join Telegram Channel
-            </a>
-        </main>
+        <a href="https://t.me/+LlAdAsPUDlNiNDE9" class="btn-prime" onclick="fbq('track', 'Lead')">
+            Enter Telegram Terminal
+        </a>
 
-        <footer class="footer">
-            <p>Managed by <a href="https://telegram.me/+TRlJl628l-FkMWE9">@Nexgroww_agency</a></p>
-            <p style="opacity: 0.5; margin-top: 4px;">Verified Secure Access</p>
-        </footer>
+        <div class="footer-credits">
+            Secure Terminal Connection <br>
+            Managed by <a href="https://telegram.me/+TRlJl628l-FkMWE9">@Nexgroww_agency</a>
+        </div>
     </div>
 
     <script>
         (function() {
             let timeLeft = 10;
-            const timerEl = document.getElementById("timer");
+            const timerObj = document.getElementById("timer");
             const countdown = setInterval(() => {
                 if (timeLeft > 0) {
                     timeLeft--;
-                    if (timerEl) timerEl.textContent = timeLeft;
+                    if (timerObj) timerObj.textContent = timeLeft;
                 } else {
                     clearInterval(countdown);
                 }
             }, 1000);
         })();
     </script>
-
 </body>
 </html>
