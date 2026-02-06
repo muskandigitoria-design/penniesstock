@@ -3,195 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>VIP Access | Penny Market</title>
+    <title>VIP Terminal | Stock Trading Penny Market</title>
 
-    <script>
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1821302385199793');
-        fbq('track', 'PageView');
-    </script>
+  
 
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #00f2ff;
-            --secondary: #7000ff;
-            --bg: #030008;
+            --cyan: #00f2ff;
+            --purple: #7000ff;
+            --dark: #050505;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--bg);
-            font-family: 'Outfit', sans-serif;
+            background-color: var(--dark);
+            font-family: 'Rajdhani', sans-serif;
             color: white;
-            overflow: hidden; /* Keeps the animation contained */
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
 
-        /* Animated Gradient Background */
-        .bg-animate {
+        /* LIVE BACKGROUND ANIMATION */
+        #bg-canvas {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(45deg, #030008, #0d001a, #030008);
-            z-index: -2;
-        }
-
-        .orb {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--secondary), transparent 70%);
-            filter: blur(80px);
-            border-radius: 50%;
             z-index: -1;
-            animation: move 15s infinite alternate ease-in-out;
-            opacity: 0.5;
+            background: radial-gradient(circle at center, #110022 0%, #050505 100%);
         }
 
-        @keyframes move {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(110%, 110%); }
-        }
-
-        /* Glass Container */
-        .main-container {
+        .main-glass {
             width: 90%;
-            max-width: 420px;
+            max-width: 400px;
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 40px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
-        }
-
-        .logo-ring {
-            width: 90px; height: 90px;
-            margin: 0 auto 20px;
             border-radius: 30px;
-            padding: 4px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(0,0,0,1);
+            position: relative;
+            z-index: 10;
         }
 
-        .logo-ring img {
+        .logo-wrap {
+            width: 100px; height: 100px;
+            margin: 0 auto 20px;
+            padding: 3px;
+            background: linear-gradient(45deg, var(--cyan), var(--purple));
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--cyan);
+        }
+
+        .logo-wrap img {
             width: 100%; height: 100%;
-            border-radius: 26px;
+            border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--bg);
+            border: 3px solid var(--dark);
         }
 
         h1 {
-            font-family: 'Syncopate', sans-serif;
-            font-size: 22px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, #fff, var(--primary));
+            line-height: 1.2;
+            margin-bottom: 10px;
+            background: linear-gradient(to bottom, #fff 50%, var(--cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 25px 0;
+        .badge {
+            display: inline-block;
+            font-size: 12px;
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--cyan);
+            border: 1px solid var(--cyan);
+            padding: 4px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 25px;
         }
 
-        .stat-card {
-            background: rgba(255,255,255,0.05);
-            padding: 15px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
         }
 
-        .stat-card span { display: block; font-size: 10px; color: var(--primary); letter-spacing: 1px; margin-bottom: 5px; }
-        .stat-card b { font-size: 20px; font-weight: 800; }
+        .stat-item { flex: 1; }
+        .stat-item span { display: block; font-size: 12px; color: #888; text-transform: uppercase; }
+        .stat-item b { font-size: 22px; color: #fff; font-family: 'Orbitron', sans-serif; }
 
-        .timer-text {
+        .timer-row {
             color: #ff3e3e;
-            font-weight: 800;
+            font-weight: 700;
             font-size: 14px;
             margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255,62,62,0.3);
+            font-family: 'Orbitron', sans-serif;
         }
 
-        /* The Animated Button */
-        .glow-btn {
+        /* ANIMATED GLOW BUTTON */
+        .cyber-btn {
             display: block;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: #000 !important;
+            background: white;
+            color: black !important;
             text-decoration: none !important;
             padding: 20px;
-            border-radius: 20px;
-            font-size: 16px;
-            font-weight: 800;
+            border-radius: 15px;
+            font-weight: 900;
+            font-size: 18px;
             text-transform: uppercase;
-            box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
+            letter-spacing: 1px;
+            box-shadow: 0 0 25px var(--cyan);
             transition: 0.3s;
         }
 
-        .glow-btn:hover {
+        .cyber-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 50px rgba(112, 0, 255, 0.6);
+            background: var(--cyan);
+            box-shadow: 0 0 40px var(--purple);
         }
 
-        .agency {
+        .footer {
             margin-top: 30px;
             font-size: 11px;
-            color: rgba(255,255,255,0.4);
+            opacity: 0.5;
             letter-spacing: 1px;
         }
-        .agency a { color: var(--primary); text-decoration: none; }
+        .footer a { color: var(--cyan); text-decoration: none; font-weight: 700; }
     </style>
 </head>
 <body>
 
-    <div class="bg-animate"></div>
-    <div class="orb"></div>
+    <canvas id="bg-canvas"></canvas>
 
-    <div class="main-container">
-        <div class="logo-ring">
+    <div class="main-glass">
+        <div class="logo-wrap">
             <img src="http://zentryx.fun/wp-content/uploads/2026/02/778gt.jpg" alt="Logo">
         </div>
 
-        <h1>Penny Market<br>VIP Access</h1>
+        <h1>STOCK TRADING<br>PENNY MARKET</h1>
+        <div class="badge">● TERMINAL ENCRYPTED</div>
 
-        <p style="font-size: 14px; opacity: 0.7; line-height: 1.6;">Real-time breakout alerts and institutional grade penny stock signals.</p>
-
-        <div class="stats-grid">
-            <div class="stat-card">
+        <div class="stats-container">
+            <div class="stat-item">
                 <span>ACCURACY</span>
                 <b>92.4%</b>
             </div>
-            <div class="stat-card">
-                <span>DAILY ROI</span>
-                <b>+18%</b>
+            <div class="stat-item">
+                <span>WIN RATE</span>
+                <b>HIGH</b>
             </div>
         </div>
 
-        <div class="timer-text">
-            INVITE EXPIRES IN: <span id="timer">10</span>S
+        <div class="timer-row">
+            LINK EXPIRES: <span id="timer">10</span>S
         </div>
 
-        <a href="https://t.me/+LlAdAsPUDlNiNDE9" class="glow-btn" onclick="fbq('track', 'Lead')">
-            Enter Telegram 📈
+        <a href="https://t.me/+LlAdAsPUDlNiNDE9" class="cyber-btn" onclick="fbq('track', 'Lead')">
+            ENTER CHANNEL 📈
         </a>
 
-        <div class="agency">
+        <div class="footer">
             MANAGED BY <br>
             <a href="https://telegram.me/+TRlJl628l-FkMWE9">@NEXGROWW_AGENCY</a>
         </div>
     </div>
 
     <script>
+        // BACKGROUND PARTICLES ANIMATION
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 242, 255, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function createParticles() {
+            for (let i = 0; i < 80; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        createParticles();
+        animate();
+
+        // TIMER SCRIPT
         (function() {
             let timeLeft = 10;
             const timerEl = document.getElementById("timer");
